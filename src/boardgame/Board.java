@@ -8,6 +8,9 @@ public class Board {
 	
 	public Board(int rows, int column) {
 	
+		if(rows < 1 || column < 1) {
+			throw new BoardException("Error creating board: there must be at least 1 row and 1 column ");
+		}
 		this.rows = rows;
 		this.column = column;
 		pierce = new Pierce[rows][column];
@@ -17,29 +20,45 @@ public class Board {
 		return rows;
 	}
 
-	public void setRows(int rows) {
-		this.rows = rows;
-	}
-
 	public int getColumn() {
 		return column;
 	}
 
-	public void setColumn(int column) {
-		this.column = column;
-	}
-	
 	public Pierce pierce(int row, int column) {
+		if(!positionExists(row, column)){
+			throw new BoardException("Position not on the board");
+		}
 		return pierce [row][column];
 	}
 	
 	public Pierce pierce(Position position) {
+		if(!positionExists(position)){
+			throw new BoardException("Position not on the board");
+		}
 		return pierce [position.getRow()][position.getColumn()];
 	}
 	public void placePiece(Pierce piece,  Position position) {
+		if(thereIsAPiece(position)) {
+			throw new BoardException("There is already i piece on position " + position);
+		}
 		pierce[position.getRow()][position.getColumn()] = piece;
 		piece.position= position;
 	}
 	
+	public boolean positionExists(Position position) {
+		return positionExists(position.getRow(), position.getColumn());
+	}
 	
+
+	public boolean positionExists(int row, int column) {
+		return row >= 0 && row < rows && column >= 0 && column < this.column; 
+				
+	}
+	
+	public boolean thereIsAPiece(Position position) {
+		if(!positionExists(position)){
+			throw new BoardException("Position not on the board");
+		}
+		return pierce(position) != null;
+	}
 }
