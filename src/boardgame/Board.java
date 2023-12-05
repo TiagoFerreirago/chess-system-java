@@ -29,6 +29,13 @@ public class Board {
 		this.column = column;
 	}
 	
+	public Pierce pierce(int row, int column) {
+		return pierce [row][column];
+	}
+	
+	public Pierce pierce(Position position) {
+		return pierce [position.getRow()][position.getColumn()];
+	}
 	
 	
 	
