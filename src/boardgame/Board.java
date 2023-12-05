@@ -36,7 +36,10 @@ public class Board {
 	public Pierce pierce(Position position) {
 		return pierce [position.getRow()][position.getColumn()];
 	}
-	
+	public void placePiece(Pierce piece,  Position position) {
+		pierce[position.getRow()][position.getColumn()] = piece;
+		piece.position= position;
+	}
 	
 	
 }
