@@ -1,6 +1,7 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Pierce;
 import boardgame.Position;
 import chess_pieces.King;
 import chess_pieces.Rook;
@@ -15,6 +16,26 @@ public class ChessMatch {
 		initialSetup();
 	}
 	
+	public ChessPierce performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+		Position source= sourcePosition.toPosition();
+		Position target= targetPosition.toPosition();
+		validadedSourcePosition(source);
+		Pierce capturePiece= makeMove(source, target);
+		return (ChessPierce)capturePiece;
+	}
+	private void validadedSourcePosition(Position position) {
+		if(!board.thereIsAPiece(position)) {
+			throw new ChessException("There is no piece on source position");
+		}
+	}
+		
+	private Pierce makeMove(Position source, Position target) {
+		Pierce p = board.removePiece(source);
+		Pierce capturePiece= board.removePiece(target);
+		board.placePiece(p, target);
+		return capturePiece;
+	}
+
 	public ChessPierce[][] getPieces(){
 		ChessPierce [][] mat= new ChessPierce[board.getRows()][board.getColumn()];
 		for( int i=0; i<board.getRows(); i++) {

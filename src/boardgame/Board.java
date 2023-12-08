@@ -44,6 +44,18 @@ public class Board {
 		pierce[position.getRow()][position.getColumn()] = piece;
 		piece.position= position;
 	}
+	public Pierce removePiece(Position position) {
+		if(!positionExists(position)){
+			throw new BoardException("Position not on the board");
+		}
+		if(pierce(position) == null) {
+			return null;
+		}
+		Pierce aux = pierce(position);
+		aux.position = null;
+		pierce [position.getRow()][position.getColumn()]= null;
+		return aux;
+	}
 	
 	public boolean positionExists(Position position) {
 		return positionExists(position.getRow(), position.getColumn());
