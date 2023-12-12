@@ -2,6 +2,7 @@ package chess;
 
 import boardgame.Board;
 import boardgame.Pierce;
+import boardgame.Position;
 
 public abstract class ChessPierce extends Pierce {
 
@@ -15,7 +16,10 @@ public abstract class ChessPierce extends Pierce {
 	public Color getColor() {
 		return color;
 	}
-
+	protected boolean isThereOponnentPiece(Position position) {
+		ChessPierce p= (ChessPierce) getBoard().pierce(position);
+		return p != null && p.getColor()!=color;
+	}
 	
 	}
 	

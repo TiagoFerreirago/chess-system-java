@@ -17,7 +17,7 @@ public abstract class Pierce {
 	
 	
 	public boolean possibleMove(Position position) {
-		return possibleMoves()[position.getColumn()][position.getRow()];
+		return possibleMoves()[position.getRow()][position.getColumn()];
 	}
 	
 	public boolean isThereAnyPossibleMove() {

@@ -35,6 +35,7 @@ public class Program {
 	
 		catch(ChessException e) {
 			System.out.print(e.getMessage());
+			e.printStackTrace();
 			sc.nextLine();
 		}
 		catch(InputMismatchException e) {

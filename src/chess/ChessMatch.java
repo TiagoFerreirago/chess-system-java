@@ -20,6 +20,7 @@ public class ChessMatch {
 		Position source= sourcePosition.toPosition();
 		Position target= targetPosition.toPosition();
 		validadedSourcePosition(source);
+		validadedTargetPosition(source,target);
 		Pierce capturePiece= makeMove(source, target);
 		return (ChessPierce)capturePiece;
 	}
@@ -29,6 +30,11 @@ public class ChessMatch {
 		}
 		if(!board.pierce(position).isThereAnyPossibleMove()) {
 			throw new ChessException("There is no possible move for the chosen piece");
+		}
+	}
+	private void validadedTargetPosition(Position source, Position target) {
+		if(!board.pierce(source).possibleMove(target)) {
+			throw new ChessException("The chosen piece can't move target position");
 		}
 	}
 		
