@@ -36,7 +36,17 @@ public class UI {
 		for(int i=0; i<piece.length; i++) {
 			System.out.print((8-i)+(" "));
 			for(int j=0; j<piece.length; j++) {
-				printPiece(piece[i][j]);
+				printPiece(piece[i][j], false);
+			}
+			System.out.println();
+		}
+		System.out.print("  a b c d e f g h");
+	}
+	public static void printBoard(ChessPierce [][] piece, boolean possibleMoves[][]) {
+		for(int i=0; i<piece.length; i++) {
+			System.out.print((8-i)+(" "));
+			for(int j=0; j<piece.length; j++) {
+				printPiece(piece[i][j], possibleMoves[i][j]);
 			}
 			System.out.println();
 		}
@@ -56,10 +66,12 @@ public class UI {
 			throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8");
 		}
 	}
-	private static void printPiece(ChessPierce piece) {
-	
+	private static void printPiece(ChessPierce piece, boolean background) {
+		if(background) {
+			System.out.print(ANSI_GREEN_BACKGROUND);
+		}
     	if (piece == null) {
-            System.out.print("-");
+            System.out.print("-"+ ANSI_RESET);
         }
         else {
             if (piece.getColor() == Color.WHITE) {
@@ -70,8 +82,7 @@ public class UI {
             }
         }
         System.out.print(" ");
-	  }
-	
+	}
 	}
 
 

@@ -15,6 +15,12 @@ public class ChessMatch {
 		board = new Board(8, 8);
 		initialSetup();
 	}
+	public boolean [][] possibleMoves(ChessPosition sourcePosition) {
+	Position position = sourcePosition.toPosition();
+	validadedSourcePosition(position);
+	return board.pierce(position).possibleMoves();
+		
+	}
 	
 	public ChessPierce performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
 		Position source= sourcePosition.toPosition();
@@ -57,7 +63,7 @@ public class ChessMatch {
 	private void placeNewPiece(char column, int row, ChessPierce piece) {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
 	}
-	
+		
 	public void initialSetup() {
 		placeNewPiece('c', 1, new Rook(board, Color.WHITE));
         placeNewPiece('c', 2, new Rook(board, Color.WHITE));
