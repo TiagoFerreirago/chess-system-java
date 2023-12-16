@@ -31,11 +31,4 @@ public abstract class Pierce {
 		}
 		return false;
 	}
-	
-	
-
-
-	
-	
-	
 }
