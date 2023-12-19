@@ -16,6 +16,11 @@ public abstract class ChessPierce extends Pierce {
 	public Color getColor() {
 		return color;
 	}
+	
+	public ChessPosition getChessPosition() {
+		return ChessPosition.fromPosition(position);
+	}
+	
 	protected boolean isThereOponnentPiece(Position position) {
 		ChessPierce p= (ChessPierce) getBoard().pierce(position);
 		return p != null && p.getColor()!=color;
