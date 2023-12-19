@@ -82,7 +82,8 @@ public class ChessMatch {
 	}
 		
 	private Pierce makeMove(Position source, Position target) {
-		Pierce p = board.removePiece(source);
+		ChessPierce p = (ChessPierce)board.removePiece(source);
+		p.increaseMoveCount();
 		Pierce capturePiece= board.removePiece(target);
 		board.placePiece(p, target);
 		
@@ -95,7 +96,8 @@ public class ChessMatch {
 	}
 	
 	private void undoMove(Position source, Position target, Pierce captured) {
-		Pierce p = board.removePiece(target);
+		ChessPierce p = (ChessPierce)board.removePiece(target);
+		p.decreaseMoveCount();
 		board.placePiece(p, source);
 		
 		if(captured != null) {

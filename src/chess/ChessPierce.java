@@ -7,6 +7,7 @@ import boardgame.Position;
 public abstract class ChessPierce extends Pierce {
 
 	private Color color;
+	private int moveCount;
 
 	public ChessPierce(Board board, Color color) {
 		super(board);
@@ -26,7 +27,17 @@ public abstract class ChessPierce extends Pierce {
 		return p != null && p.getColor()!=color;
 	}
 	
+	public void increaseMoveCount() {
+		moveCount ++;
 	}
 	
+	public void decreaseMoveCount() {
+		moveCount --;
+	}
+	
+	public int getMoveCount() {
+		return moveCount;
+	}
+}
 	
 
