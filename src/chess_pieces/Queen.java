@@ -40,7 +40,7 @@ public class Queen extends ChessPierce{
 		p.setValue(position.getRow() , position.getColumn() + 1);
 		while(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getColumn()][p.getRow()] = true;
-			p.setColumn(p.getColumn() - 1);
+			p.setColumn(p.getColumn() -1);
 		}
 		if(getBoard().positionExists(p) && isThereOponnentPiece(p)) {
 			mat [p.getRow()][p.getColumn()] = true;
@@ -49,7 +49,7 @@ public class Queen extends ChessPierce{
 		p.setValue(position.getRow() , position.getColumn() - 1);
 		while(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat [p.getRow()][p.getColumn()] = true;
-			p.setColumn(p.getColumn() + 1);
+			p.setColumn(p.getColumn() +1);
 		}
 		if(getBoard().positionExists(p) && isThereOponnentPiece(p)) {
 			mat [p.getRow()][p.getColumn()] = true;
