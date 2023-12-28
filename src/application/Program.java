@@ -20,7 +20,7 @@ public class Program {
 		Scanner sc= new Scanner(System.in);
 		List <ChessPierce> captured = new ArrayList<>();
 		
-		while(true) {
+		while(!chessMatch.getCheckMate()) {
 			try {
 			UI.clearScreen();
 			UI.printMatch(chessMatch, captured);
@@ -28,9 +28,9 @@ public class Program {
 			System.out.println("Source: ");
 			ChessPosition source = UI.readChessPosition(sc);
 			
-			//boolean [][] possibleMoves = chessMatch.possibleMoves(source);
-			//UI.clearScreen();
-			//UI.printBoard(chessMatch.getPieces(), possibleMoves);
+			boolean [][] possibleMoves = chessMatch.possibleMoves(source);
+			UI.clearScreen();
+			UI.printBoard(chessMatch.getPieces(), possibleMoves);
 			System.out.println();
 			System.out.print("Target: ");
 			ChessPosition target = UI.readChessPosition(sc);
@@ -42,16 +42,20 @@ public class Program {
 				captured.add(capturedPiece);
 			}
 		}
-	
+
 		catch(ChessException e) {
 			System.out.print(e.getMessage());
+			e.printStackTrace();
 			sc.nextLine();
 		}
 		catch(InputMismatchException e) {
 			System.out.print(e.getMessage());
+			e.printStackTrace();
 			sc.nextLine();
 		}
 	 }
+		UI.clearScreen();
+		UI.printMatch(chessMatch, captured);
   }
 }
 	
