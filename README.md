@@ -7,3 +7,19 @@ Desenvolvi um jogo de xadrez para aplicar os conceitos aprendidos durante o curs
 
 ## Modelo de Dominio
 ![Modelo Conceitual](https://github.com/TiagoFerreirago/repositoryImgChess/blob/main/modelo%20de%20classes%20chess.png)
+
+# Tecnologias utilizadas
+## Back end
+- Java
+
+- Padrão arquitetural
+  
+- Poo
+  
+- Tratamentos de Erros
+
+  # Autor
+
+Tiago de Jesus Ferreira
+
+https://www.linkedin.com/in/tiagoferreira97/
